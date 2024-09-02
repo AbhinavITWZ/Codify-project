@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codify Learning</title>
+    <link rel="stylesheet" href="/Codify/CSS/learning.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.34.0/min/vs/loader.js"></script>
+
+    <style>
+        /* Code Editor Section */
+#code-editor-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #282c34;
+    border-radius: 8px;
+    color: white;
+}
+
+#code-editor-section h2 {
+    margin-bottom: 15px;
+    color: #61dafb;
+    text-align: center;
+}
+
+#editor {
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+}
+
+#editor-toolbar {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#editor-toolbar button,
+#editor-toolbar select {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #61dafb;
+    color: #282c34;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+#editor-toolbar button:hover,
+#editor-toolbar select:hover {
+    background-color: #21a1f1;
+}
+
+#output-container {
+    margin-top: 20px;
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#output {
+    white-space: pre-wrap;
+    color: #9cdcfe;
+}
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="/Codify/ASSETS/bgspace.mp4" type="video/mp4">
+    </video>
+    <header>
+        <div class="logo">Codify</div>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/game layout/game.html">Gaming</a></li>
+                <li><a href="/source/source.html">Gaming library</a></li>
+                <li><a href="/aboutus/ABOUT.HTML">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="intro">
+            <h1><span>Welcome to Codify Learning</span></h1>
+            <p id="intro-content">
+                Codify Learning is an innovative platform designed to make learning web development fun and interactive. Here, you can start from the basics and advance to more complex topics with ease. Our mission is to provide you with the best resources and an engaging learning experience.
+            </p>
+            <button id="read-more-btn" class="read-more">Read About us</button>
+        </div>
+        <button id="start-learning-btn" class="start-learning">Start Learning</button>
+
+
+
+ <!-- Code Editor Section -->
+ <section id="code-editor-section">
+    <h2>Practice Your Code</h2>
+    <div id="editor"></div>
+    <div id="editor-toolbar">
+        <button id="run-code-btn">Run Code</button>
+        <button id="download-code-btn">Download Code</button>
+        <select id="language-select">
+            <option value="javascript">JavaScript</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="python">Python</option>
+        </select>
+        <button id="toggle-theme-btn">Toggle Theme</button>
+    </div>
+    <div id="output-container">
+        <h3>Output:</h3>
+        <pre id="output"></pre>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="basics" class="hidden">
+            <h2><span>Basics of Web Development</span></h2>
+            <p>Web development is the process of creating and maintaining websites and web applications. It involves a combination of various technologies and practices to build, design, and optimize websites for performance and user experience. The fundamental technologies used in web development are HTML (Hypertext Markup Language), CSS (Cascading Style Sheets), and JavaScript.</p>
+            <button id="next-to-topics-btn">Next</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="topics" class="hidden">
+            <h2>Select a Topic</h2>
+            <button class="topic-btn" data-topic="html">HTML</button>
+            <button class="topic-btn" data-topic="css">CSS</button>
+            <button class="topic-btn" data-topic="javascript">JavaScript</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="study-method" class="hidden">
+            <h2>Select Study Method</h2>
+            <button class="study-btn" data-method="notes">Notes</button>
+            <button class="study-btn" data-method="lectures">Lectures</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="notes-method" class="hidden">
+            <h2>Select Tutor</h2>
+            <div class="tutor-cards">
+                <div class="tutor-card" data-tutor="cwh">
+                    <h3>Code with Harry</h3>
+                    <button class="select-tutor-btn">Select</button>
+                </div>
+                <div class="tutor-card" data-tutor="apna">
+                    <h3>Apna College</h3>
+                    <button class="select-tutor-btn">Select</button>
+                </div>
+                <div class="tutor-card" data-tutor="pw-skills">
+                    <h3>PW Skills</h3>
+                    <button class="select-tutor-btn">Select</button>
+                </div>
+                <div class="tutor-card" data-tutor="documentation">
+                    <h3>Documentation</h3>
+                    <button class="select-tutor-btn">Select</button>
+                </div>
+            </div>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="notes-content" class="hidden">
+            <h2>Notes</h2>
+            <button id="view-notes-btn">View Notes</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="select-language" class="hidden">
+            <h2>Select Language</h2>
+            <button class="language-btn" data-language="english">English</button>
+            <button class="language-btn" data-language="hindi">Hindi</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="english-channels" class="hidden">
+            <h2>Select Channel</h2>
+            <button class="english-channel-btn" data-channel="freecodecamp">FreeCodeCamp</button>
+            <button class="english-channel-btn" data-channel="brocode">BroCode</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="hindi-channels" class="hidden">
+            <h2>Select Channel</h2>
+            <button class="hindi-channel-btn" data-channel="chai-aur-code">Chai Aur Code</button>
+            <button class="hindi-channel-btn" data-channel="code-with-harry">Code With Harry</button>
+            <button class="hindi-channel-btn" data-channel="apna-college">Apna College</button>
+            <button class="hindi-channel-btn" data-channel="pw-skills">PW Skills</button>
+            <button class="go-back-btn hidden">Go Back</button>
+        </div>
+
+        <div id="lecture-section" class="hidden">
+            <button id="view-lecture-btn" class="hidden">View Lecture</button>
+            <button class="go-back-btn">Go Back</button>
+        </div>
+
+        <div class="iframe-container hidden">
+            <iframe id="lectures-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <button class="go-back-btn">Go Back</button>
+        </div>
+
+        <div class="rating-comment-section hidden">
+            <h2>Rate and Comment</h2>
+            <div class="star-rating">
+                <i class="fa fa-star" data-value="1"></i>
+                <i class="fa fa-star" data-value="2"></i>
+                <i class="fa fa-star" data-value="3"></i>
+                <i class="fa fa-star" data-value="4"></i>
+                <i class="fa fa-star" data-value="5"></i>
+            </div>
+            <div id="cmnrt">
+                <form id="review-form">
+                    <input type="hidden" id="rating" name="rating">
+                    <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Your comment" required></textarea>
+                    <textarea id="name" name="name" rows="1" cols="50" placeholder="Your Name Here...."></textarea>
+                    <button type="submit">Submit Review</button>
+                </form>
+                <div id="reviews-container"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Codify. All rights reserved.</p>
+    </footer>
+ <script>
+    // Initialize Monaco Editor
+require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.34.0/min/vs' } });
+require(['vs/editor/editor.main'], function () {
+    window.editor = monaco.editor.create(document.getElementById('editor'), {
+        value: `// Write your code here\nconsole.log("Hello, Codify!");`,
+        language: 'javascript',
+        theme: 'vs-dark',
+        automaticLayout: true, // Responsive layout
+        minimap: { enabled: true }, // Show minimap
+        scrollbar: {
+            vertical: 'visible',
+            horizontal: 'visible'
+        },
+        suggestOnTriggerCharacters: true, // Autocomplete
+        acceptSuggestionOnEnter: 'on',
+        tabSize: 2,
+        fontSize: 14
+    });
+
+    // Toggle between dark and light themes
+    const toggleThemeBtn = document.getElementById('toggle-theme-btn');
+    toggleThemeBtn.addEventListener('click', () => {
+        const currentTheme = window.editor._themeService.getTheme().themeName;
+        const newTheme = currentTheme === 'vs-dark' ? 'vs-light' : 'vs-dark';
+        monaco.editor.setTheme(newTheme);
+    });
+
+    // Language selector
+    const languageSelect = document.getElementById('language-select');
+    languageSelect.addEventListener('change', function () {
+        const language = this.value;
+        monaco.editor.setModelLanguage(window.editor.getModel(), language);
+    });
+
+    // Run code button
+    const runCodeBtn = document.getElementById('run-code-btn');
+    runCodeBtn.addEventListener('click', function () {
+        const code = window.editor.getValue();
+        const output = document.getElementById('output');
+        try {
+            output.innerText = eval(code);
+        } catch (e) {
+            output.innerText = e.message;
+        }
+    });
+
+    // Download code as file
+    const downloadCodeBtn = document.getElementById('download-code-btn');
+    downloadCodeBtn.addEventListener('click', function () {
+        const code = window.editor.getValue();
+        const blob = new Blob([code], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.download = 'code.txt';
+        a.href = url;
+        a.click();
+    });
+});
+
+ </script>
+    <script src="/Codify/JS/learning.js"></script>
+</body>
+</html>
